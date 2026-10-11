@@ -361,7 +361,7 @@ window.addEventListener("message", (event) => {
 const guestName = new URLSearchParams(location.search).get("invitado");
 if(guestName) {
   const box = document.getElementById("guestGreeting");
-  box.textContent = `¡${guestName}, nos hace muchísima ilusión compartir este día con vosotros!`;
+  box.textContent = `¡ ${guestName}, nos hace muchísima ilusión compartir este día con vosotros !`;
   box.classList.add("show");
 }
 
