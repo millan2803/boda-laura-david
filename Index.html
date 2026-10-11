@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f4ed">
+<meta name="description" content="Laura y David se casan. Toda la información de nuestro gran día.">
+<title>Laura & David · Nuestra boda</title>
+<style>
+:root{
+  --bg:#f7f4ed;            /* Fondo general beige suave */
+  --paper:#fffdf9;         /* Tarjetas beige/crema muy claro */
+  --ink:#1E2E42;           /* Texto azul marino muy oscuro */
+  --green:#2C4A6F;         /* Azul claro/medio sobrio para botones, títulos e iconos */
+  --sage:#D4E2EE;          /* Azul pastel suave para bordes y enfoques */
+  --gold:#b79c6b;          /* Dorado cálido para acentos y monograma */
+  --muted:#677B8C;         /* Azul grisáceo para textos secundarios */
+  --line:#e2dcd2;          /* Líneas divisorias en tono beige suave */
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.65}a{color:inherit}.sans{font-family:Arial,Helvetica,sans-serif}.wrap{width:min(100% - 34px,980px);margin:auto}.eyebrow{font:10px/1.6 Arial,sans-serif;text-transform:uppercase;letter-spacing:.25em;color:var(--green)}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(48px,9vw,100px);font-weight:400;line-height:.94;letter-spacing:-.045em;margin:22px 0}h2{font-size:clamp(32px,5vw,54px);font-weight:400;line-height:1.08;margin-bottom:20px}h3{font-size:25px;font-weight:400}.btn{display:inline-block;padding:13px 22px;background:var(--green);color:white;text-decoration:none;border:1px solid var(--green);font:10px Arial,sans-serif;text-transform:uppercase;letter-spacing:.16em;transition:.2s;cursor:pointer}.btn:hover{background:#1E3550}.btn.ghost{background:transparent;color:var(--green)}
+
+/* ESTILOS DE LA PANTALLA INICIAL DEL SOBRE (TRANSICIÓN DE 4 SEGUNDOS) */
+#sobre-cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 4s cubic-bezier(0.4, 0, 0.2, 1), 
+              visibility 4s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 20px;
+}
+
+#sobre-cover.abierto {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.12);
+  pointer-events: none;
+}
+
+.sobre-container {
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.sobre-img {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.12));
+  transition: transform 0.6s ease;
+}
+
+.sobre-container:hover .sobre-img {
+  transform: translateY(-5px) scale(1.02);
+}
+
+.sobre-texto {
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--green);
+  animation: pulso 2.5s infinite;
+}
+
+@keyframes pulso {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* BOTÓN FLOTANTE MÚSICA DE FONDO */
+#music-control {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9000;
+  background: var(--paper);
+  color: var(--green);
+  border: 1px solid var(--line);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, background 0.2s ease;
+  font-size: 18px;
+}
+
+#music-control:hover {
+  transform: scale(1.08);
+  background: var(--sage);
+}
+
+.hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:70px 0;position:relative;overflow:hidden;background:radial-gradient(ellipse at 12% 20%,#eae3d5 0,transparent 30%),radial-gradient(ellipse at 90% 78%,#dce6ee 0,transparent 31%),var(--bg)}.hero:before,.hero:after{content:"";position:absolute;width:260px;height:430px;border:1px solid #c2cdd788;border-radius:50%;transform:rotate(34deg);pointer-events:none}.hero:before{left:-160px;top:5%}.hero:after{right:-160px;bottom:0;transform:rotate(-34deg)}.hero-inner{position:relative;z-index:1;max-width:760px}.monogram{width:56px;height:56px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;margin:0 auto 28px;font-size:20px;color:var(--green);font-style:italic}.names-separator{font-size:clamp(40px,7vw,70px);font-style:italic;color:var(--gold);display:block;margin:7px 0}.hero-date{font:11px Arial,sans-serif;letter-spacing:.28em;text-transform:uppercase;margin:26px 0 32px}.leaf{color:var(--gold);font-size:24px;margin:22px 0}.intro{font-size:18px;max-width:620px;margin:0 auto 26px}.section{padding:88px 0;text-align:center}.section.white{background:var(--paper)}.narrow{max-width:650px;margin-left:auto;margin-right:auto}.guest{display:none;max-width:500px;margin:0 auto 24px;padding:13px 18px;background:var(--paper);border:1px solid var(--line);font-style:italic}.guest.show{display:block}.countdown{display:flex;justify-content:center;gap:clamp(12px,4vw,38px);margin:34px 0 10px}.time strong{display:block;font-size:clamp(32px,6vw,54px);font-weight:400;line-height:1.1}.time span{font:9px Arial,sans-serif;text-transform:uppercase;letter-spacing:.18em;color:var(--muted)}.story-grid{display:grid;grid-template-columns:1fr;gap:18px;margin:34px auto;max-width:760px}.photo{min-height:270px;display:grid;place-items:center;padding:18px;text-align:center;color:#354B60;background:linear-gradient(135deg,#eae3d5,#cce0f0);background-size:cover;background-position:center;border:7px solid var(--paper);outline:1px solid var(--line);font:10px Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase}.photo span{background:#fffdf0d9;padding:8px 12px}.photo img{max-width:100%;height:auto;display:block}
+
+/* CENTRADO DE LA TARJETA DE CEREMONIA */
+.details{
+  display:flex;
+  justify-content:center;
+  margin:36px auto 0;
+  max-width:800px;
+}
+.detail{
+  padding:34px 22px;
+  border:1px solid var(--line);
+  background:var(--bg);
+  max-width:420px;
+  width:100%;
+}
+
+.detail .leaf{margin-top:0}.detail p{margin-bottom:9px}.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:35px auto 0;max-width:850px}.gallery .photo{min-height:210px}.rsvp-card{border:1px solid var(--line);padding:clamp(24px,5vw,48px);max-width:680px;margin:32px auto 0;background:var(--bg)}.rsvp-note{font:12px/1.7 Arial,sans-serif;color:var(--muted);max-width:520px;margin:20px auto 0}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;text-align:left;margin:28px 0}
+.form-grid label{display:flex;flex-direction:column;gap:7px;font:12px Arial,sans-serif;color:var(--green)}
+.form-grid input,.form-grid select,.form-grid textarea{width:100%;padding:12px;border:1px solid var(--line);background:var(--paper);font:14px Arial,sans-serif;color:var(--ink);border-radius:0}
+.form-grid input:focus,.form-grid select:focus,.form-grid textarea:focus{outline:2px solid var(--sage);border-color:var(--green)}
+.form-grid .full{grid-column:1/-1}
+.total-box{grid-column:1/-1;text-align:center;padding:10px;background:var(--paper);border:1px dashed var(--line);font:14px Arial,sans-serif;color:var(--green);font-weight:bold;margin-top:4px}
+.rsvp-status{font:13px Arial,sans-serif;margin-top:16px;color:var(--green)}
+.footer{padding:48px 0;text-align:center;font:9px Arial,sans-serif;letter-spacing:.2em;color:var(--muted)}.footer .names{font:italic 25px Georgia,serif;letter-spacing:0;color:var(--green)}.nav{position:absolute;top:22px;left:0;right:0;z-index:2}.nav-inner{display:flex;justify-content:center;gap:25px;flex-wrap:wrap}.nav a{text-decoration:none;font:9px Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--green)}.nav a:hover{text-decoration:underline}
+@media(max-width:620px){.nav{display:none}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.section{padding:65px 0}.story-grid,.details{grid-template-columns:1fr}.photo{min-height:230px}.gallery{grid-template-columns:1fr 1fr}.gallery .photo{min-height:170px}.gallery .photo:last-child{grid-column:1/-1}.hero:before,.hero:after{width:190px;height:330px}.intro{font-size:16px}}
+</style>
+</head>
+<body>
+
+<!-- PANTALLA INICIAL: SOBRE -->
+<div id="sobre-cover" onclick="abrirInvitacion()">
+  <div class="sobre-container">
+    <img src="sobre.jpg" alt="Sobre de invitación" class="sobre-img">
+    <p class="sobre-texto">Toca el sobre para abrir la invitación</p>
+  </div>
+</div>
+
+<!-- ELEMENTO DE AUDIO MÚSICA DE FONDO -->
+<audio id="bg-music" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<!-- BOTÓN CONTROL DE MÚSICA -->
+<button id="music-control" onclick="toggleMusica()" title="Activar/Pausar Música">🎵</button>
+
+<header class="hero" id="inicio">
+ <nav class="nav"><div class="wrap nav-inner"><a href="#historia">Nuestra historia</a><a href="#dia">El gran día</a><a href="#galeria">Galería</a><a href="#rsvp">Confirmación</a></div></nav>
+ <div class="wrap hero-inner">
+  <div class="monogram">L & D</div>
+  <p class="eyebrow">Con mucha ilusión, queremos invitarte a</p>
+  <h1>Laura <span class="names-separator">&</span> David</h1>
+  <p class="hero-date">15 · MAYO · 2027</p>
+  <div class="leaf">❦</div>
+  <div id="guestGreeting" class="guest"></div>
+  <p class="intro">Dos historias, un mismo camino y un día muy especial que queremos compartir contigo.</p>
+  <a class="btn" href="#invitacion">Descubre la invitación</a>
+ </div>
+</header>
+<main>
+<section class="section white" id="invitacion">
+ <div class="wrap narrow">
+  <p class="eyebrow">¡Nos casamos!</p><h2>El comienzo de algo eterno</h2>
+  <p>Hay días que se quedan para siempre en el corazón. El 15 de mayo de 2027 comienza una nueva aventura para nosotros y nos encantaría celebrarla rodeados de las personas que forman parte de nuestra historia.</p>
+  <div class="leaf">— ❦ —</div>
+  <p class="eyebrow">La cuenta atrás ha comenzado</p>
+  <div class="countdown" aria-label="Cuenta atrás">
+   <div class="time"><strong id="days">000</strong><span>Días</span></div>
+   <div class="time"><strong id="hours">00</strong><span>Horas</span></div>
+   <div class="time"><strong id="minutes">00</strong><span>Minutos</span></div>
+   <div class="time"><strong id="seconds">00</strong><span>Segundos</span></div>
+  </div>
+ </div>
+</section>
+<section class="section" id="historia">
+ <div class="wrap">
+  <p class="eyebrow">Un poquito de nosotros</p><h2>Nuestra historia</h2>
+  <p class="narrow">Lo más bonito de este camino es compartirlo.</p>
+  <div class="story-grid">
+   <div class="photo"><span><img src="fotoprincipal1.jpeg" alt="Foto principal de la página"></span></div>
+  </div>
+ </div>
+</section>
+<section class="section white" id="dia">
+ <div class="wrap">
+  <p class="eyebrow">Reserva la fecha</p><h2>El gran día</h2>
+  <p>Nos encantará compartir cada instante contigo.</p>
+  <div class="details">
+   <article class="detail">
+    <div class="leaf">✧</div>
+    <h3>Ceremonia y Celebración</h3>
+    <p id="horaCeremonia">12:30h</p>
+    <p id="lugarCeremonia">Restaurante El Zahor (Dúrcal)</p>
+    <a class="btn ghost" id="mapaCeremonia" href="https://www.google.com/maps/search/?api=1&query=Restaurante+El+Zahor+Durcal" target="_blank" rel="noopener">Ver ubicación</a>
+   </article>
+  </div>
+ </div>
+</section>
+<section class="section" id="galeria">
+ <div class="wrap">
+  <p class="eyebrow">Pequeños grandes momentos</p><h2>Nuestra galería</h2>
+  <p class="narrow">Algunos recuerdos que nos hacen sonreír.</p>
+  <div class="gallery">
+   <div class="photo"><span><img src="foto1.jpeg" alt="Foto1"></span></div>
+   <div class="photo"><span><img src="logoboda.png" alt="Logo Boda"></span></div>
+   <div class="photo"><span><img src="foto2.jpeg" alt="Foto2"></span></div>
+  </div>
+ </div>
+</section>
+<section class="section white" id="rsvp">
+ <div class="wrap">
+  <p class="eyebrow">Tu presencia es nuestro mejor regalo</p><h2>¿Nos acompañas?</h2>
+  <div class="rsvp-card">
+   <p>Para organizarlo todo con mucho cariño, rellena este formulario. No tendrás que salir de esta invitación.</p>
+   <form id="rsvpForm" action="PEGA_AQUI_LA_URL_DE_APPS_SCRIPT" method="post" target="rsvpFrame">
+    <div class="form-grid">
+     <label class="full">Nombre y apellidos
+      <input name="nombre" required maxlength="120" autocomplete="name" placeholder="Tu nombre completo">
+     </label>
+     <label class="full">¿Podrás acompañarnos?
+      <select name="asistencia" required><option value="">Selecciona una opción</option><option value="Sí, allí estaré">¡Sí, allí estaré!</option><option value="No podré asistir">Lo siento, no podré asistir</option></select>
+     </label>
+     <label>¿Cuántos adultos asistiréis?
+      <select name="adultos" id="adultos" required>
+        <option value="0">0 adultos</option>
+        <option value="1" selected>1 adulto</option>
+        <option value="2">2 adultos</option>
+        <option value="3">3 adultos</option>
+        <option value="4">4 adultos</option>
+        <option value="5">5 adultos</option>
+        <option value="6">6 adultos</option>
+        <option value="7">7 adultos</option>
+        <option value="8">8 adultos</option>
+        <option value="9">9 adultos</option>
+        <option value="10">10 adultos</option>
+      </select>
+     </label>
+     <label>¿Cuántos niños asistiréis?
+      <select name="ninos" id="ninos" required>
+        <option value="0" selected>0 niños</option>
+        <option value="1">1 niño</option>
+        <option value="2">2 niños</option>
+        <option value="3">3 niños</option>
+        <option value="4">4 niños</option>
+        <option value="5">5 niños</option>
+        <option value="6">6 niños</option>
+        <option value="7">7 niños</option>
+        <option value="8">8 niños</option>
+        <option value="9">9 niños</option>
+        <option value="10">10 niños</option>
+      </select>
+     </label>
+     <div class="total-box" id="totalPersonas">Total de asistentes: 1</div>
+     <label class="full">Alergias o necesidades alimentarias (opcional)
+      <input name="alergias" maxlength="300" placeholder="Si tienes alguna, indícala aquí">
+     </label>
+     <label class="full">Un mensaje para Laura y David (opcional)
+      <textarea name="mensaje" maxlength="1000" rows="3" placeholder="Déjanos unas palabras bonitas…"></textarea>
+     </label>
+    </div>
+    <input type="hidden" name="invitado" id="rsvpGuest" value="">
+    <button class="btn" id="submitRsvp" type="submit">Enviar confirmación</button>
+    <p class="rsvp-note">Tus datos se utilizarán únicamente para organizar la boda.</p>
+    <p id="rsvpStatus" class="rsvp-status" role="status" aria-live="polite"></p>
+   </form>
+   <iframe name="rsvpFrame" id="rsvpFrame" title="Envío de confirmación" style="display:none"></iframe>
+  </div>
+ </div>
+</section>
+</main>
+<footer class="footer"><div class="wrap"><p class="names">Laura & David</p><p>15 · MAYO · 2027</p><p>HECHO CON CARIÑO · NOS VEMOS MUY PRONTO</p></div></footer>
+
+<script>
+/* LÓGICA MÚSICA DE FONDO */
+const music = document.getElementById("bg-music");
+const musicBtn = document.getElementById("music-control");
+
+function abrirInvitacion() {
+  const sobre = document.getElementById('sobre-cover');
+  sobre.classList.add('abierto');
+  
+  // Iniciar reproducción de la canción al tocar el sobre
+  if (music) {
+    music.play().then(() => {
+      musicBtn.textContent = "🎵";
+    }).catch(err => {
+      console.log("Reproducción bloqueada por navegador:", err);
+      musicBtn.textContent = "🔇";
+    });
+  }
+}
+
+function toggleMusica() {
+  if (music.paused) {
+    music.play();
+    musicBtn.textContent = "🎵";
+  } else {
+    music.pause();
+    musicBtn.textContent = "🔇";
+  }
+}
+
+/* CONFIGURACIÓN */
+const CONFIG = {
+ fecha: "2027-05-15T12:30:00",
+ horaCeremonia: "12:30h",
+ lugarCeremonia: "Restaurante El Zahor (Dúrcal)",
+ mapaCeremonia: "https://www.google.com/maps/search/?api=1&query=Restaurante+El+Zahor+Durcal",
+ formularioRSVP: "https://script.google.com/macros/s/AKfycbzZOdayREg8K8w2KHl09p0A6RvgKLaAQZLWcls9Jj8aWciyQENN_NdseXFL5U1u0SUS-g/exec"
+};
+
+document.getElementById("horaCeremonia").textContent = CONFIG.horaCeremonia;
+document.getElementById("lugarCeremonia").textContent = CONFIG.lugarCeremonia;
+document.getElementById("mapaCeremonia").href = CONFIG.mapaCeremonia;
+
+/* Cálculo del total de asistentes */
+function actualizarTotal() {
+  const adultos = Number(document.getElementById("adultos").value) || 0;
+  const ninos = Number(document.getElementById("ninos").value) || 0;
+  const total = adultos + ninos;
+  document.getElementById("totalPersonas").textContent = `Total de asistentes: ${total}`;
+}
+document.getElementById("adultos").addEventListener("change", actualizarTotal);
+document.getElementById("ninos").addEventListener("change", actualizarTotal);
+actualizarTotal();
+
+const rsvpForm = document.getElementById("rsvpForm");
+rsvpForm.action = CONFIG.formularioRSVP;
+const rsvpGuestName = new URLSearchParams(location.search).get("invitado");
+if(rsvpGuestName) document.getElementById("rsvpGuest").value = rsvpGuestName;
+
+let rsvpSubmitting = false;
+rsvpForm.addEventListener("submit", () => {
+  rsvpSubmitting = true;
+  const status = document.getElementById("rsvpStatus");
+  status.textContent = "Enviando tu confirmación…";
+  document.getElementById("submitRsvp").disabled = true;
+  document.getElementById("submitRsvp").textContent = "Enviando…";
+});
+
+window.addEventListener("message", (event) => {
+  const data = event.data;
+  if(!data || data.source !== "laura-david-rsvp") return;
+  const status = document.getElementById("rsvpStatus");
+  status.textContent = data.ok
+    ? "¡Muchas gracias! Tu respuesta se ha guardado. 💙"
+    : "No hemos podido guardar tu respuesta. Comprueba la conexión e inténtalo de nuevo.";
+  document.getElementById("submitRsvp").disabled = false;
+  document.getElementById("submitRsvp").textContent = "Enviar confirmación";
+  rsvpSubmitting = false;
+});
+
+const guestName = new URLSearchParams(location.search).get("invitado");
+if(guestName) {
+  const box = document.getElementById("guestGreeting");
+  box.textContent = `${guestName}, ¡nos hace muchísima ilusión compartir este día contigo!`;
+  box.classList.add("show");
+}
+
+function updateCountdown(){
+  const target = new Date(CONFIG.fecha).getTime(), diff = target - Date.now();
+  if(diff <= 0){
+    ["days","hours","minutes","seconds"].forEach(id => document.getElementById(id).textContent = "00");
+    return;
+  }
+  document.getElementById("days").textContent = Math.floor(diff / 86400000);
+  document.getElementById("hours").textContent = String(Math.floor(diff % 86400000 / 3600000)).padStart(2, "0");
+  document.getElementById("minutes").textContent = String(Math.floor(diff % 3600000 / 60000)).padStart(2, "0");
+  document.getElementById("seconds").textContent = String(Math.floor(diff % 60000 / 1000)).padStart(2, "0");
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>
